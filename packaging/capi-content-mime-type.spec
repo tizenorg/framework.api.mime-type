@@ -1,7 +1,7 @@
 Name:       capi-content-mime-type
 Summary:    A MIME type library in Tizen C API
 Version:    0.0.2
-Release:    2
+Release:    3
 Group:      APIs
 License:    Apache-2.0
 Source0:    %{name}-%{version}.tar.gz
@@ -36,6 +36,8 @@ make %{?jobs:-j%jobs}
 %install
 rm -rf %{buildroot}
 %make_install
+mkdir -p %{buildroot}/usr/share/license
+install LICENSE %{buildroot}/usr/share/license/%{name}
 
 %post -p /sbin/ldconfig
 
@@ -45,6 +47,7 @@ rm -rf %{buildroot}
 %files
 %{_libdir}/lib*.so.*
 %manifest capi-content-mime-type.manifest
+/usr/share/license/%{name}
 
 %files devel
 %{_includedir}/content/*.h
