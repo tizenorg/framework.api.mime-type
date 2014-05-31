@@ -1,0 +1,22 @@
+
+Source: capi-content-mime-type
+Section: libs
+Priority: extra
+Maintainer: Woongsuk Cho <ws77.cho@samsung.com>, Junghyuk Park <junghyuk.park@samsung.com>
+Build-Depends: debhelper (>= 5), dlog-dev, capi-base-common-dev, libxdgmime-dev
+
+Package: capi-content-mime-type
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: A MIME type library in Tizen Native API
+
+Package: capi-content-mime-type-dev
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, capi-content-mime-type (= ${Source-Version}), capi-base-common-dev
+Description: A MIME type library in Tizen Native API (DEV)
+
+Package: capi-content-mime-type-dbg
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, capi-content-mime-type (= ${Source-Version})
+Description: A MIME type library in Tizen Native API (DBG)
+
