@@ -1,7 +1,7 @@
 Name:       capi-content-mime-type
 Summary:    A MIME type library in Tizen C API
-Version:    0.0.2
-Release:    2
+Version:    0.0.3
+Release:    3
 Group:      TO_BE/FILLED_IN
 License:    TO BE FILLED IN
 Source0:    %{name}-%{version}.tar.gz
@@ -29,6 +29,11 @@ Requires:  pkgconfig(capi-base-common)
 
 
 %build
+%if 0%{?sec_build_binary_debug_enable}
+export CFLAGS="$CFLAGS -DTIZEN_DEBUG_ENABLE"
+export CXXFLAGS="$CXXFLAGS -DTIZEN_DEBUG_ENABLE"
+export FFLAGS="$FFLAGS -DTIZEN_DEBUG_ENABLE"
+%endif
 MAJORVER=`echo %{version} | awk 'BEGIN {FS="."}{print $1}'`  
 cmake . -DCMAKE_INSTALL_PREFIX=/usr -DFULLVER=%{version} -DMAJORVER=${MAJORVER} 
 
@@ -38,9 +43,8 @@ make %{?jobs:-j%jobs}
 %install
 rm -rf %{buildroot}
 %make_install
-
 mkdir -p %{buildroot}/usr/share/license
-cp LICENSE %{buildroot}/usr/share/license/%{name}
+install LICENSE %{buildroot}/usr/share/license/%{name}
 
 %post -p /sbin/ldconfig
 
@@ -56,4 +60,5 @@ cp LICENSE %{buildroot}/usr/share/license/%{name}
 %{_includedir}/content/*.h
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/lib*.so
+
 
