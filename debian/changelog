@@ -1,0 +1,9 @@
+capi-content-mime-type (0.0.1-1) unstable; urgency=low
+
+  * Initial upload
+  * Git: slp/api/mime-type
+  * Tag: capi-content-mime-type_0.0.1-1
+
+ -- Junghyuk Park <junghyuk.park@samsung.com>  Mon, 23 Apr 2012 15:31:12 +0900
+
+

@@ -25,13 +25,19 @@ extern "C"
 #endif
 
 /**
+ * @file mime_type.h
+ */
+
+/**
  * @addtogroup CAPI_CONTENT_MIME_TYPE_MODULE
  * @{
  */
 
 
 /**
- * @brief Enumeration of error code
+ * @brief Enumeration for error.
+ *
+ * @since_tizen @if MOBILE 2.3 @elseif WEARABLE 2.3.1 @endif
  */
 typedef enum
 {
@@ -45,11 +51,14 @@ typedef enum
 /**
  * @brief Gets the MIME type for the given file extension.
  *
- * @remarks The @a mime_type must be released with free() by you.
- * @param [in] file_extension The file extension without the leading dot ('.')
- * @param [out] mime_type The MIME type for the given file extension \n
- * The MIME type is 'application/octet-stream' if the given file extension is not associated with specific file formats
- * @return 0 on success, otherwise a negative error value.
+ * @since_tizen @if MOBILE 2.3 @elseif WEARABLE 2.3.1 @endif
+ *
+ * @remarks You must release @a mime_type using free().
+ * @param[in] file_extension The file extension without the leading dot ('.')
+ * @param[out] mime_type The MIME type for the given file extension \n
+ *                       The MIME type is 'application/octet-stream' if the given file extension is not associated with specific file formats
+ * @return @c 0 on success,
+ *         otherwise a negative error value.
  * @retval #MIME_TYPE_ERROR_NONE Successful
  * @retval #MIME_TYPE_ERROR_INVALID_PARAMETER Invalid parameter
  * @retval #MIME_TYPE_ERROR_OUT_OF_MEMORY Out of memory
@@ -60,13 +69,17 @@ int mime_type_get_mime_type(const char *file_extension, char **mime_type);
 
 
 /**
- * @brief Gets the file extensions for the given MIME type.
+ * @brief Gets file extensions for the given MIME type.
  *
- * @remarks The @a file_extension must be released with free() by you.
- * @param [in] mime_type The MIME type
- * @param [out] file_extension The array of file extension without the leading dot ('.')
- * @param [out] length The length of the array of file extension or zero if there is none
- * @return 0 on success, otherwise a negative error value.
+ * @since_tizen @if MOBILE 2.3 @elseif WEARABLE 2.3.1 @endif
+ *
+ * @remarks You must release @a file_extension using free().
+ * @param[in] mime_type The MIME type
+ * @param[out] file_extension The array of file extensions without the leading dot ('.')
+ * @param[out] length The length of the array of file extensions
+ *                    otherwise zero if there none are present
+ * @return @c 0 on success,
+ *         otherwise a negative error value.
  * @retval #MIME_TYPE_ERROR_NONE Successful
  * @retval #MIME_TYPE_ERROR_INVALID_PARAMETER Invalid parameter
  * @retval #MIME_TYPE_ERROR_OUT_OF_MEMORY Out of memory
